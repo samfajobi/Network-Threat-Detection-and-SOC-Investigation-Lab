@@ -128,3 +128,47 @@ This combination is common in **enterprise SOCs and NDR platforms**.
 6. Response actions are decided
 
 ---
+
+## 🧪 Example Detection Scenarios
+
+* Port scanning and reconnaissance
+* Malware C2 over DNS or HTTP
+* Suspicious beaconing behavior
+* Abnormal DNS query patterns
+* Unauthorized file downloads
+
+---
+
+## 🔧 Implementation Highlights
+
+* Traffic analysis using live interfaces or PCAP files
+* Suricata rules and alert tuning
+* Zeek log analysis and correlation
+* Investigation using timestamps, IPs, domains, and protocols
+
+---
+
+## 🎓 Skills Gained
+
+* Network traffic analysis
+* IDS alert interpretation
+* Behavioral threat hunting
+* SOC investigation workflows
+* NDR architecture understanding
+
+---
+
+## 🧠 Key Takeaway
+
+> **Suricata detects the threat, Zeek explains the story behind it.**
+
+This project demonstrates how combining detection and visibility tools results in stronger, more reliable network security monitoring.
+
+---
+
+
+## 👤 Author
+
+**Olusegun Fajobi**
+Cybersecurity Engineer (Blue & Red Team)
+GitHub: [https://github.com/samfajobi](https://github.com/samfajobi)
