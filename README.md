@@ -1,32 +1,32 @@
+Absolutely — this is already strong. I’ll **restructure and elevate it** to include **Suricata, Zeek, Wazuh, and Wireshark**, while keeping it **clean, professional, and SOC-grade**.
+You can copy this directly into your GitHub README.
+
+---
+
 # network-detection-and-response-system
-Building a Network Detection and Response System with Suricata and Zeek.
 
+## Open-Source Network Detection and Response (NDR) SOC Lab
 
-# Network Detection and Response (NDR) System using Suricata and Zeek
+---
 
 ## 📌 Project Overview
 
-This project focuses on building a **Network Detection and Response (NDR)** lab using **Suricata** and **Zeek**, two powerful open-source network security monitoring tools.
+This project implements an **open-source Network Detection and Response (NDR) SOC lab** designed to simulate **real-world security monitoring, detection, correlation, and investigation workflows** used in modern Security Operations Centers (SOCs).
 
-The goal of this project is to simulate **real-world SOC network monitoring**, where traffic is continuously inspected, suspicious activity is detected, enriched, and investigated, and actionable security insights are produced.
+The lab integrates **Suricata**, **Zeek**, **Wazuh**, and **Wireshark** to provide end-to-end visibility into network traffic — from detection and alerting to correlation and packet-level forensic analysis.
 
-This lab mirrors how enterprise SOCs detect threats such as:
-
-* Network intrusions
-* Malware command-and-control (C2)
-* Port scanning and reconnaissance
-* Data exfiltration
-* Suspicious DNS and HTTP activity
+The primary goal is to build **SOC-ready skills** by detecting suspicious network activity, enriching alerts with context, correlating events, and validating incidents through deep packet inspection.
 
 ---
 
 ## 🎯 Project Objectives
 
-* Understand how **network traffic flows** through detection engines
-* Learn the **difference between signature-based and behavioral detection**
-* Gain hands-on experience with **Suricata (IDS)** and **Zeek (NSM)**
-* Correlate alerts with rich network metadata
-* Build SOC-ready investigation and analysis skills
+* Simulate **real-world SOC network monitoring**
+* Understand how **network traffic flows through detection engines**
+* Learn the difference between **signature-based detection** and **behavioral analysis**
+* Correlate network events using shared flow identifiers
+* Perform **packet-level forensic analysis**
+* Build practical **SOC L1/L2 investigation skills**
 
 ---
 
@@ -35,14 +35,14 @@ This lab mirrors how enterprise SOCs detect threats such as:
 ```
 Network Traffic (Live or PCAP)
         ↓
-  Network Interface / PCAP
+ Network Interface / PCAP Capture
         ↓
  ┌──────────────────────────┐
  │        Suricata           │
  │  (Intrusion Detection)   │
  │  - Signatures            │
  │  - Alerts                │
- │  - Flow logs             │
+ │  - Flow metadata         │
  └─────────────┬────────────┘
                ↓
  ┌──────────────────────────┐
@@ -55,7 +55,22 @@ Network Traffic (Live or PCAP)
  │  - ssl.log               │
  └─────────────┬────────────┘
                ↓
-     SOC Analysis & Response
+ ┌──────────────────────────┐
+ │          Wazuh            │
+ │  (SIEM & Correlation)    │
+ │  - Log collection        │
+ │  - Event correlation     │
+ │  - Alerting              │
+ └─────────────┬────────────┘
+               ↓
+ ┌──────────────────────────┐
+ │        Wireshark          │
+ │  (Packet Analysis)       │
+ │  - PCAP inspection       │
+ │  - Payload analysis      │
+ └──────────────────────────┘
+               ↓
+     SOC Investigation & Response
 ```
 
 ---
@@ -67,12 +82,12 @@ Network Traffic (Live or PCAP)
 Suricata is responsible for **detecting malicious or suspicious activity** using:
 
 * Signature-based detection (rules)
-* Protocol analysis
+* Protocol awareness
 * Threat intelligence feeds
 
-Suricata answers the question:
+It answers the question:
 
-> **“Is this network traffic malicious?”**
+> **“Is this network traffic potentially malicious?”**
 
 **Key Outputs:**
 
@@ -84,88 +99,117 @@ Suricata answers the question:
 
 ### 🧠 Zeek – Network Security Monitoring (NSM)
 
-Zeek focuses on **deep visibility and context**, not alerts.
+Zeek provides **deep visibility and context** into network activity rather than direct alerts.
 
-It extracts and logs:
+It extracts rich metadata such as:
 
-* Connection metadata (`conn.log`)
-* DNS queries (`dns.log`)
+* Connection logs (`conn.log`)
+* DNS activity (`dns.log`)
 * HTTP requests (`http.log`)
 * TLS/SSL details (`ssl.log`)
-* File transfers
+* File transfer metadata
 
-Zeek answers the question:
+It answers the question:
 
 > **“What exactly happened on the network?”**
 
 ---
 
-## ⚖️ Why Use Suricata and Zeek Together?
+### 🧩 Wazuh – SIEM & Event Correlation
 
-| Tool     | Strength                           |
-| -------- | ---------------------------------- |
-| Suricata | Detects known threats and exploits |
-| Zeek     | Provides deep forensic context     |
+Wazuh acts as the **central SOC platform** for:
 
-Together, they enable:
+* Collecting Suricata and Zeek logs via the Wazuh agent
+* Parsing and normalizing events
+* Correlating alerts using shared identifiers (e.g., Community ID)
+* Generating actionable security alerts
 
-* High-confidence detections
-* Faster incident investigation
-* Reduced false positives
-* Better threat hunting
+It answers the question:
 
-This combination is common in **enterprise SOCs and NDR platforms**.
+> **“Which events matter and how are they related?”**
+
+---
+
+### 🔬 Wireshark – Packet-Level Forensic Analysis
+
+Wireshark is used for **deep packet inspection and forensic validation**.
+
+It allows analysts to:
+
+* Inspect raw packets (PCAPs)
+* Validate IDS alerts
+* Analyze payloads and protocols
+* Confirm exploitation or data exfiltration
+
+It answers the question:
+
+> **“What do the actual packets reveal?”**
+
+---
+
+## ⚖️ Why Use These Tools Together?
+
+| Tool      | Primary Strength                   |
+| --------- | ---------------------------------- |
+| Suricata  | Detects known threats and exploits |
+| Zeek      | Provides behavioral context        |
+| Wazuh     | Correlates and prioritizes events  |
+| Wireshark | Confirms incidents at packet level |
+
+Together, they provide a **complete NDR and SOC investigation workflow** commonly used in enterprise environments.
 
 ---
 
 ## 🔄 Detection & Investigation Workflow
 
-1. Network traffic is mirrored or captured
-2. **Suricata** inspects traffic and generates alerts
+1. Network traffic is captured (live or PCAP)
+2. **Suricata** detects suspicious activity
 3. **Zeek** logs detailed protocol metadata
-4. Analyst correlates Suricata alerts with Zeek logs
-5. Incident is validated and investigated
-6. Response actions are decided
+4. **Wazuh** collects and correlates events
+5. Analyst investigates alerts and related logs
+6. **Wireshark** is used to validate findings
+7. Incident is confirmed and documented
 
 ---
 
 ## 🧪 Example Detection Scenarios
 
 * Port scanning and reconnaissance
-* Malware C2 over DNS or HTTP
-* Suspicious beaconing behavior
-* Abnormal DNS query patterns
+* Malware command-and-control (C2) communication
+* DNS tunneling or abnormal DNS patterns
+* Suspicious HTTP beaconing
 * Unauthorized file downloads
 
 ---
 
 ## 🔧 Implementation Highlights
 
-* Traffic analysis using live interfaces or PCAP files
-* Suricata rules and alert tuning
-* Zeek log analysis and correlation
-* Investigation using timestamps, IPs, domains, and protocols
+* Live traffic and PCAP-based analysis
+* Suricata rule tuning and alert analysis
+* Zeek log correlation and context enrichment
+* Centralized monitoring with Wazuh
+* Packet-level investigation using Wireshark
 
 ---
 
-## 🎓 Skills Gained
+## 🎓 Skills Demonstrated
 
 * Network traffic analysis
-* IDS alert interpretation
-* Behavioral threat hunting
-* SOC investigation workflows
+* IDS alert triage
+* Event correlation and investigation
+* Packet-level forensic analysis
+* SOC L1/L2 workflows
 * NDR architecture understanding
 
 ---
 
 ## 🧠 Key Takeaway
 
-> **Suricata detects the threat, Zeek explains the story behind it.**
+> **Suricata detects the threat, Zeek explains the behavior, Wazuh correlates the events, and Wireshark confirms the truth in the packets.**
 
-This project demonstrates how combining detection and visibility tools results in stronger, more reliable network security monitoring.
+This project demonstrates how multiple open-source tools can be combined to build a powerful, SOC-ready Network Detection and Response platform.
 
 ---
-
 
 ## 👤 Author
 
