@@ -1,10 +1,3 @@
-Absolutely — this is already strong. I’ll **restructure and elevate it** to include **Suricata, Zeek, Wazuh, and Wireshark**, while keeping it **clean, professional, and SOC-grade**.
-You can copy this directly into your GitHub README.
-
----
-
-# network-detection-and-response-system
-
 ## Open-Source Network Detection and Response (NDR) SOC Lab
 
 ---
