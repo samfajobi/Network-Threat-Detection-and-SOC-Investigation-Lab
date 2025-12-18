@@ -40,8 +40,9 @@ sudo apt install suricata -y
 ```bash
 suricata --build-info
 ```
-
 > ✅ Confirm that Suricata is compiled with **AF_PACKET** support.
+
+![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-1.png) 
 
 ---
 
@@ -52,6 +53,7 @@ suricata --build-info
 ```text
 /etc/suricata/suricata.yaml
 ```
+![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-2.png) 
 
 ---
 
