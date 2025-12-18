@@ -77,6 +77,7 @@ eth0: inet xxx.xxx.x.xx/xx
 Interface: eth0
 IP Address: xxx.xxx.x.xx
 ```
+![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-3.png) 
 
 ---
 
@@ -87,8 +88,14 @@ Edit the Suricata configuration file:
 ```bash
 sudo nano /etc/suricata/suricata.yaml
 ```
+Configure `HOME_NET`:
+Replace the IP with your IP 
+
+![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-4.png)
+
 
 Configure `af-packet`:
+```ctrl f ``` to find the af-packet
 
 ```yaml
 af-packet:
@@ -96,6 +103,7 @@ af-packet:
     cluster-id: 99
     cluster-type: cluster_flow
 ```
+![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-5.png)
 
 ### Explanation
 
@@ -120,20 +128,6 @@ outputs:
       filename: eve.json
 ```
 
-### Log Directory
-
-```text
-/var/log/suricata/
-```
-
-Key log files:
-
-* `eve.json` → Alerts & events
-* `fast.log` → Quick alerts
-* `stats.log` → Performance stats
-
----
-
 ## 🧾 Rule Management
 
 ### Default Rule Directory
@@ -154,7 +148,17 @@ sudo suricata-update
 ls /var/lib/suricata/rules/
 ```
 
-> 📌 Rules used: **Emerging Threats Open**
+### Log Directory
+
+```text
+/var/log/suricata/
+```
+
+Key log files:
+
+* `eve.json` → Alerts & events
+* `fast.log` → Quick alerts
+* `stats.log` → Performance stats
 
 ---
 
