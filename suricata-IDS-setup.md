@@ -132,7 +132,59 @@ Key log files:
 
 ---
 
+## 🧾 Rule Management
 
+### Default Rule Directory
+
+```text
+/var/lib/suricata/rules/
+```
+
+### Update Rules
+
+```bash
+sudo suricata-update
+```
+
+### Verify Loaded Rules
+
+```bash
+ls /var/lib/suricata/rules/
+```
+
+> 📌 Rules used: **Emerging Threats Open**
+
+---
+
+## 🔄 Service Management
+
+### Check Suricata Service Status
+
+```bash
+sudo systemctl status suricata
+```
+
+### Restart Suricata After Changes
+
+```bash
+sudo systemctl restart suricata
+```
+
+### Confirm IDS Mode
+
+```bash
+sudo journalctl -u suricata
+```
+
+Expected behavior:
+
+```text
+Suricata running in IDS mode
+```
+
+> ℹ️ Suricata defaults to **IDS mode** when started via `suricata.service`.
+
+---
 
 
 
