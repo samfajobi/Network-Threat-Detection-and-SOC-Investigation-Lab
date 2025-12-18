@@ -73,7 +73,7 @@ eth0: inet 192.168.1.10/24
 
 ```text
 Interface: eth0
-IP Address: 192.168.1.10
+IP Address: XXX.XXX.X.XX
 ```
 
 ---
