@@ -151,7 +151,7 @@ Everything else is:
 
 ---
 
-# TL;DR (Memorize This)
+# TL;DR
 
 * `eve.json` = full, structured, real-time security telemetry
 * `fast.log` = quick alert summary
