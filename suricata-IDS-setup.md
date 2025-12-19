@@ -151,15 +151,15 @@ Chekout link below to learn more about rules writing
 ```bash
 sudo suricata -T -c /etc/suricata/suricata.yaml -v
 ```
-Error;
+Error:
 
 ![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-6a.png)
 
-Error;
+Error:
 
 ![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-6b.png)
 
-Fixed;
+Fixed:
 
 ![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-6c.png)
 
@@ -186,18 +186,7 @@ sudo systemctl status suricata
 ```bash
 sudo systemctl restart suricata
 ```
-
-### Confirm IDS Mode
-
-```bash
-sudo journalctl -u suricata
-```
-
-Expected behavior:
-
-```text
-Suricata running in IDS mode
-```
+![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-7.png)
 
 > ℹ️ Suricata defaults to **IDS mode** when started via `suricata.service`.
 
