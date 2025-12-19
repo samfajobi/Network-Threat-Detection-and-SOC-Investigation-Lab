@@ -178,13 +178,13 @@ Key log files:
 ### Check Suricata Service Status
 
 ```bash
-sudo systemctl status suricata
+sudo systemctl restart suricata
 ```
 
 ### Restart Suricata After Changes
 
 ```bash
-sudo systemctl restart suricata
+sudo systemctl status suricata
 ```
 ![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-7.png)
 
@@ -194,7 +194,13 @@ sudo systemctl restart suricata
 
 ## 🧪 Testing & Validation
 
-### Generate Basic Traffic(Another Bash or Kali Linux can be used here...)
+### Generate Basic Traffic(you can use another Bash or Kali Linux can be used here...)
+
+### Monitor Alerts in Real Time
+
+```bash
+sudo tail -f /var/log/suricata/eve.json
+```
 
 ```bash
 ping google.com
@@ -205,14 +211,6 @@ ping google.com
 ```bash
 nmap -sS <target-ip>
 ```
-
-### Monitor Alerts in Real Time
-
-```bash
-sudo tail -f /var/log/suricata/eve.json
-```
-
-
 
 ---
 
@@ -248,7 +246,6 @@ sudo tail -f /var/log/suricata/eve.json
 
 ## 📚 References
 
-* [https://suricata.io](https://suricata.io)
 * [https://docs.suricata.io](https://docs.suricata.io)
 * [https://rules.emergingthreats.net](https://rules.emergingthreats.net)
 
