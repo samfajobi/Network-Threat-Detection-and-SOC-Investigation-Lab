@@ -42,7 +42,7 @@ suricata --build-info
 ```
 > ✅ Confirm that Suricata is compiled with **AF_PACKET** support.
 
-![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-1.png) 
+![Suricata-IDS-setup-1](../screenshots/suricata-IDS-setup-1.png) 
 
 ---
 
@@ -53,7 +53,7 @@ suricata --build-info
 ```text
 /etc/suricata/suricata.yaml
 ```
-![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-2.png) 
+![Suricata-IDS-setup-1](../screenshots/suricata-IDS-setup-2.png) 
 
 ---
 
@@ -77,7 +77,7 @@ eth0: inet xxx.xxx.x.xx/xx
 Interface: eth0
 IP Address: xxx.xxx.x.xx
 ```
-![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-3.png) 
+![Suricata-IDS-setup-1](../screenshots/suricata-IDS-setup-3.png) 
 
 ---
 
@@ -91,7 +91,7 @@ sudo nano /etc/suricata/suricata.yaml
 Configure `HOME_NET`:
 Replace the IP with your IP 
 
-![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-4.png)
+![Suricata-IDS-setup-1](../screenshots/suricata-IDS-setup-4.png)
 
 
 Configure `af-packet`:
@@ -103,7 +103,7 @@ af-packet:
     cluster-id: 99
     cluster-type: cluster_flow
 ```
-![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-5.png)
+![Suricata-IDS-setup-1](../screenshots/suricata-IDS-setup-5.png)
 
 ### Explanation
 
@@ -130,18 +130,18 @@ outputs:
 
 ## 🧾 Rule Management
 
-![Suricata-IDS-setup-1](screenshots/Suricata-Rule-Example.png)
+![Suricata-IDS-setup-1](../screenshots/Suricata-Rule-Example.png)
 
 ### Default Rule Directory
 
 ```text
 /var/lib/suricata/rules/
 ```
-![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-5a.png)
+![Suricata-IDS-setup-1](../screenshots/suricata-IDS-setup-5a.png)
 
 ### Set your Rules
 
-![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-6.png)
+![Suricata-IDS-setup-1](../screenshots/suricata-IDS-setup-6.png)
 
 Chekout link below to learn more about rules writing
 * [https://docs.suricata.io](https://docs.suricata.io)
@@ -153,15 +153,15 @@ sudo suricata -T -c /etc/suricata/suricata.yaml -v
 ```
 Error:
 
-![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-6a.png)
+![Suricata-IDS-setup-1](../screenshots/suricata-IDS-setup-6a.png)
 
 Error:
 
-![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-6b.png)
+![Suricata-IDS-setup-1](../screenshots/suricata-IDS-setup-6b.png)
 
 Fixed:
 
-![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-6c.png)
+![Suricata-IDS-setup-1](../screenshots/suricata-IDS-setup-6c.png)
 
 
 
@@ -186,7 +186,7 @@ sudo systemctl restart suricata
 ```bash
 sudo systemctl status suricata
 ```
-![Suricata-IDS-setup-1](screenshots/suricata-IDS-setup-7.png)
+![Suricata-IDS-setup-1](../screenshots/suricata-IDS-setup-7.png)
 
 > ℹ️ Suricata defaults to **IDS mode** when started via `suricata.service`.
 
