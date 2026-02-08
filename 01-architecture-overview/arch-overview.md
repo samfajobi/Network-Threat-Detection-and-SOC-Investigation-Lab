@@ -1,9 +1,9 @@
 # 🏗️ Architecture Overview
 
-This project implements a **network-focused threat detection and monitoring architecture** designed to simulate real-world SOC operations.  
-It integrates **Suricata**, **Zeek**, **Wazuh** and **Wireshark** to provide layered network visibility, alerting, and event correlation.
+![Network Threat Detection Architecture](../screenshots/Network-Threat-Detection-Project-01.png)
 
-![Network Threat Detection Architecture](../screenshots/Network-Threat-Detection-Project.png)
+This project implements a **network-focused threat detection and monitoring architecture** designed to simulate real-world SOC operations.  
+It integrates **Suricata**, **Zeek**, **Wireshark** and **Wazuh** to provide layered network visibility, alerting, and event correlation.
 
 ---
 
@@ -51,36 +51,68 @@ This system acts as the **monitored network asset** and hosts the network detect
   - IDS mode (detection only)
   - IPS mode (detection and blocking)
 
-#### Zeek (Network Security Monitor)
-- Provides **deep network visibility and metadata analysis**
-- Focuses on behavioral logging rather than signatures
-- Generates logs such as:
-  - Connection logs
-  - DNS queries
-  - HTTP requests
-  - SSL/TLS sessions
-- Enables anomaly detection and traffic analysis
+---
 
-#### Wazuh Agent
+### 🌐 Zeek – Network Visibility & Behavioral Analysis
+
+- Zeek focuses on **network behavior and metadata**, not signatures.
+- It produces detailed logs such as:
+  - `conn.log` (connections)
+  - `dns.log` (DNS queries)
+  - `http.log` (HTTP sessions)
+  - `ssl.log` (TLS handshakes)
+- These logs provide context around network activity and support threat hunting.
+
+**Output:**
+- Rich network telemetry
+- Timeline reconstruction
+- Detection of abnormal behavior
+
+---
+
+---
+
+### 📦 Wireshark – Packet-Level Analysis
+
+- Wireshark is used **strictly for packet capture and deep inspection**.
+- It is **not used for detection or alerting**.
+- Packet captures (PCAPs) are analyzed:
+  - After an alert is triggered
+  - During incident investigations
+  - To validate Suricata and Zeek findings
+
+**Use Cases:**
+- Inspect malicious payloads
+- Validate exploit attempts
+- Reconstruct attack sessions
+- Support forensic analysis
+
+---
+
+### Wazuh Agent
 - Runs on the Ubuntu server
 - Collects:
   - Suricata alert logs (`eve.json`)
   - Zeek network logs (`conn.log`, `dns.log`, etc.)
 - Securely forwards logs to the Wazuh SIEM
 
----
+### 🧠 Wazuh – SIEM & Event Correlation
 
-### 🟩 Wazuh SIEM & Dashboard
+- Wazuh acts as the **central SIEM platform**.
+- It collects logs from:
+  - Suricata alerts (`eve.json`)
+  - Zeek network logs
+  - System and agent logs from the Ubuntu sensor
+- Wazuh correlates network and host-based events to:
+  - Generate actionable alerts
+  - Reduce false positives
+  - Provide SOC dashboards and visualizations
 
-The Wazuh server functions as the **central security monitoring and correlation platform**.
-
-- Ingests network alerts and logs
-- Uses decoders and rules to parse events
-- Correlates multiple events into incidents
-- Generates alerts, dashboards, and timelines
-- Provides centralized visibility for investigations
-
-This component represents the **SOC SIEM layer**.
+**Capabilities:**
+- Centralized log management
+- Event correlation
+- Alerting & dashboards
+- Incident investigation support
 
 ---
 
@@ -123,7 +155,10 @@ This architecture is intentionally designed to reflect **enterprise SOC network 
 ---
 
 ## 🚀 Future Enhancements
+
+- Integrate firewall and router telemetry
 - Add threat intelligence feeds
 - Develop custom Wazuh correlation rules
 - Expand IPS enforcement scenarios
+- Map detections to MITRE ATT&CK techniques
 
