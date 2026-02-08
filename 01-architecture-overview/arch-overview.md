@@ -99,3 +99,33 @@ Using the Wazuh dashboard, a SOC analyst can:
 
 ## 🔁 Data Flow Summary
 
+1. Attacker generates malicious traffic from Kali Linux  
+2. Traffic reaches the Ubuntu server  
+3. Suricata inspects packets and generates alerts  
+4. Zeek records detailed network activity  
+5. Wazuh agent collects Suricata and Zeek logs  
+6. Logs are forwarded to the Wazuh SIEM  
+7. Events are correlated and visualized  
+8. SOC analyst investigates and responds  
+
+---
+
+## 🛡️ Why This Architecture Works
+
+- Layered detection (signature-based + behavioral)
+- Network-first monitoring approach
+- Centralized SIEM correlation
+- SOC-aligned investigation workflow
+- Realistic and extensible design
+
+This architecture is intentionally designed to reflect **enterprise SOC network monitoring environments**, not just a basic lab setup.
+
+---
+
+## 🚀 Future Enhancements
+
+- Integrate firewall and router telemetry
+- Add threat intelligence feeds
+- Develop custom Wazuh correlation rules
+- Expand IPS enforcement scenarios
+- Map detections to MITRE ATT&CK techniques
