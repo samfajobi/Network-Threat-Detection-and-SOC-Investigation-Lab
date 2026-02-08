@@ -1,5 +1,7 @@
 ## Network Detection and Response (NDR) SOC Lab with Packet Analysis.
 
+![Network Threat Detection Architecture](screenshots/Network-Threat-Detection-Project.png)
+
 ---
 
 ## 📌 Project Overview

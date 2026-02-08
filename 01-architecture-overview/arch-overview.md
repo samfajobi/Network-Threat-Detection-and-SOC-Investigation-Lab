@@ -1,7 +1,7 @@
 # 🏗️ Architecture Overview
 
 This project implements a **network-focused threat detection and monitoring architecture** designed to simulate real-world SOC operations.  
-It integrates **Suricata**, **Zeek**, and **Wazuh** to provide layered network visibility, alerting, and event correlation.
+It integrates **Suricata**, **Zeek**, **Wazuh** and **Wireshark** to provide layered network visibility, alerting, and event correlation.
 
 ![Network Threat Detection Architecture](../screenshots/Network-Threat-Detection-Project.png)
 
