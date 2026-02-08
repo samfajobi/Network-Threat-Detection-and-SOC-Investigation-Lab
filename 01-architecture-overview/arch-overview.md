@@ -35,6 +35,20 @@ This setup closely mirrors how enterprise SOC environments monitor and respond t
 
 ---
 
+### 🟦 Network Sensor – Ubuntu Server
 
+This system acts as the **monitored network asset** and hosts the network detection tools.
+
+#### Suricata (IDS / IPS)
+- Performs **signature-based and protocol-aware detection**
+- Monitors live network traffic
+- Generates alerts for:
+  - Reconnaissance activity
+  - Brute-force attempts
+  - Exploit signatures
+  - Suspicious traffic patterns
+- Operates in:
+  - IDS mode (detection only)
+  - IPS mode (detection and blocking)
 
 
