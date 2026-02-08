@@ -20,6 +20,20 @@ This setup closely mirrors how enterprise SOC environments monitor and respond t
 
 ---
 
+## 🧩 Core Components
+
+### 🔴 Attacker Machine – Kali Linux
+
+- Simulates real-world adversary behavior
+- Launches attacks such as:
+  - Port scanning
+  - SSH brute-force attempts
+  - Web directory enumeration
+  - Malware download simulations
+  - Command-and-control beaconing
+- Represents both external and internal threat actors
+
+---
 
 
 
